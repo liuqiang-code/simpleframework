@@ -3,6 +3,7 @@ package com.bigstrong.service.sole.impl;
 import com.bigstrong.dao.bo.ShopCategory;
 import com.bigstrong.dao.dto.Result;
 import com.bigstrong.service.sole.ShopCategoryService;
+import org.simpleframework.core.annotation.Service;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * Date: 2021/7/18
  * Description: No Description
  */
+@Service
 public class ShopCategoryServiceImpl implements ShopCategoryService {
     @Override
     public Result<Boolean> addShopCategory(ShopCategory shopCategory) {

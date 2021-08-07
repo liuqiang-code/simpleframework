@@ -1,4 +1,4 @@
-package org.simpleframework.core.util;
+package org.simpleframework.util;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

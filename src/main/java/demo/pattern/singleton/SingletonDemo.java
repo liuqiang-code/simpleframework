@@ -10,14 +10,16 @@ import java.lang.reflect.InvocationTargetException;
  */
 public class SingletonDemo {
     public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        System.out.println(LazyDoubleCheckSingleton.getInstance());
+        System.out.println(EnumStarvingSingleton.getInstance());
 
-        Class clazz = LazyDoubleCheckSingleton.class;
+        Class clazz = EnumStarvingSingleton.class;
 
         Constructor declaredConstructor = clazz.getDeclaredConstructor();
 
         declaredConstructor.setAccessible(true);
 
-        System.out.println(declaredConstructor.newInstance());
+        EnumStarvingSingleton enumStarvingSingleton = (EnumStarvingSingleton) declaredConstructor.newInstance();
+
+        System.out.println(enumStarvingSingleton.getInstance());
     }
 }

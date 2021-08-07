@@ -7,6 +7,7 @@ import com.bigstrong.dao.dto.Result;
 import com.bigstrong.service.combine.HeadLineShopCategoryCombineService;
 import com.bigstrong.service.sole.HeadLineService;
 import com.bigstrong.service.sole.ShopCategoryService;
+import org.simpleframework.core.annotation.Service;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * Date: 2021/7/18
  * Description: No Description
  */
+@Service
 public class HeadLineShopCategoryCombineServiceImpl implements HeadLineShopCategoryCombineService {
     private HeadLineService headLineService;
     private ShopCategoryService shopCategoryService;

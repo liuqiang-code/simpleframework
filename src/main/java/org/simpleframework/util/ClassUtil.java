@@ -1,7 +1,9 @@
-package org.simpleframework.core.util;
+package org.simpleframework.util;
 
 import lombok.extern.slf4j.Slf4j;
 import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
@@ -93,6 +95,24 @@ public class ClassUtil {
             return Class.forName(className);
         } catch (ClassNotFoundException e) {
             log.error("load class error", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 实例化class
+     * @param clazz
+     * @param <T>
+     * @param accessible 是否支持创建出私有class对象的实例
+     * @return
+     */
+    public static <T> T newInstance(Class<T> clazz, boolean accessible) {
+        try {
+            Constructor<?> declaredConstructor = clazz.getDeclaredConstructor();
+            declaredConstructor.setAccessible(accessible);
+            return (T) declaredConstructor.newInstance();
+        } catch (Exception e) {
+            log.error("newInstance error", e);
             throw new RuntimeException(e);
         }
     }

@@ -3,6 +3,8 @@ package com.bigstrong.controller.superadmin;
 import com.bigstrong.dao.bo.HeadLine;
 import com.bigstrong.dao.dto.Result;
 import com.bigstrong.service.sole.HeadLineService;
+import org.simpleframework.core.annotation.Controller;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.List;
  * Date: 2021/7/18
  * Description: No Description
  */
+@Controller
 public class HeadLineOperationController {
     private HeadLineService headLineService;
 
