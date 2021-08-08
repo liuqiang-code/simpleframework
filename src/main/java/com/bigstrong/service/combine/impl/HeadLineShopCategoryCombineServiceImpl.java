@@ -8,6 +8,7 @@ import com.bigstrong.service.combine.HeadLineShopCategoryCombineService;
 import com.bigstrong.service.sole.HeadLineService;
 import com.bigstrong.service.sole.ShopCategoryService;
 import org.simpleframework.core.annotation.Service;
+import org.simpleframework.inject.annotation.Autowired;
 
 import java.util.List;
 
@@ -18,7 +19,9 @@ import java.util.List;
  */
 @Service
 public class HeadLineShopCategoryCombineServiceImpl implements HeadLineShopCategoryCombineService {
+    @Autowired
     private HeadLineService headLineService;
+    @Autowired
     private ShopCategoryService shopCategoryService;
     @Override
     public Result<MainPageInfoDTO> getMainPageInfo() {
