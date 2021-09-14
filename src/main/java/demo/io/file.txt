@@ -17,3 +17,15 @@ IO流（输入流、输出流）
     out.write(byte[] buff, int start, int size);字节数组buff从start位置开始写size长度的字节到流
 5) FileInputStream 具体实现了在文件上读取数据
    FileOutputStream 实现了向文件中写出byte数据的方法
+2. 字符流
+1) 编码问题
+2) 认识文本和文本文件
+java的文本(char)是16位无符号编码，是字符的unicode编码(双字节编码)
+文件是byte byte byte...的数据序列
+文本文件是文本(char)序列按照某种编码方案(utf-8,utf-16be,gbk)序列化为byte的存储结果
+3) 字符流(Reader Writer)
+字符的处理，一次处理一个字符
+字符的底层仍然是基本的字节序列
+字符流的基本实现
+    InputStreamReader 完成byte流解析为char流，按照编码解析
+    OutputStreamWriter 完成char流到byte流，按照编码解析
