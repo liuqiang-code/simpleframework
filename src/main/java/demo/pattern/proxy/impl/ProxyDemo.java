@@ -2,6 +2,8 @@ package demo.pattern.proxy.impl;
 
 import demo.pattern.proxy.ToBPayment;
 import demo.pattern.proxy.ToCPayment;
+import demo.pattern.proxy.cglib.AlipayMethodInterceptor;
+import demo.pattern.proxy.cglib.CglibUtil;
 import demo.pattern.proxy.jdkproxy.AlipayInvocationHandler;
 import demo.pattern.proxy.jdkproxy.JdkDynamicProxyUtil;
 
@@ -28,9 +30,24 @@ public class ProxyDemo {
 //        ToCPayment toCProxy = JdkDynamicProxyUtil.newProxyInstance(toCPayment, alipayInvocationHandler);
 //        toCProxy.pay();
 
-        ToBPayment toBPaymentProxy = (ToBPayment) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
-                ToBPaymentImpl.class.getInterfaces(), new AlipayInvocationHandler(new ToBPaymentImpl()));
+//        ToBPayment toBPaymentProxy = (ToBPayment) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(),
+//                ToBPaymentImpl.class.getInterfaces(), new AlipayInvocationHandler(new ToBPaymentImpl()));
+//
+//        toBPaymentProxy.pay();
 
-        toBPaymentProxy.pay();
+        CommonPay commonPay = new CommonPay();
+
+//        AlipayInvocationHandler alipayInvocationHandler = new AlipayInvocationHandler(commonPay);
+//
+//        CommonPay commonPay1 = JdkDynamicProxyUtil.newProxyInstance(commonPay, alipayInvocationHandler);
+//
+//        commonPay1.pay();
+
+        AlipayMethodInterceptor alipayMethodInterceptor = new AlipayMethodInterceptor();
+
+        CommonPay proxy = CglibUtil.createProxy(commonPay, alipayMethodInterceptor);
+
+        proxy.pay();
+
     }
 }
